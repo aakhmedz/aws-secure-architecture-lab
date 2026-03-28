@@ -16,7 +16,6 @@ An EC2 instance attempts to execute an AWS CLI command without sufficient permis
 
 2. Executed command:
 
-```bash
 aws iam list-users
 
 ## Evidence:
