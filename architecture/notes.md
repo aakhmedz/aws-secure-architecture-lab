@@ -188,6 +188,6 @@ The final design demonstrates a secure baseline AWS environment that supports bo
 ## Diagram Reference
 
 See:
-- `architecture/diagrams/architecture.png`
+![Architecture Diagram](screenshots/architecture.png)
 
-This diagram visually represents the relationship between the VPC, subnets, EC2 instances, gateways, IAM access model, and monitoring components.
+This diagram visually represents the relationship between the VPC, subnets, EC2 instances and gateways.
