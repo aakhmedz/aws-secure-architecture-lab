@@ -47,6 +47,7 @@ The lab environment consists of:
 
 ### VPC and Subnets
 ![VPC Setup](screenshots/VPC-subnets.png)
+This VPC layout establishes the foundation for network isolation within AWS. By defining a custom CIDR range instead of relying on the default VPC, full control over IP addressing and segmentation is achieved. The separation between public and private subnets ensures that only explicitly exposed resources are reachable from the internet, reducing the attack surface significantly. This mirrors real-world production environments where backend systems are never directly exposed.
 
 ### Route Tables
 Public Route-table
@@ -55,17 +56,25 @@ Public Route-table
 Private Route-table
 ![Route Tables](screenshots/Private-Route-table.png)
 
+Route tables enforce strict traffic flow within the environment. The public route table allows internet access through the Internet Gateway, enabling external communication for the bastion host. In contrast, the private route table prevents direct inbound internet access and instead routes outbound traffic through the NAT Gateway. This design ensures that private resources can still receive updates and patches without being publicly exposed.
 
 ### NAT Gateway
 ![NAT Gateway](screenshots/Nat-config.png)
+
 ![NAT Gateway](screenshots/Igw-config.png)
 
+The NAT Gateway plays a critical role in maintaining security while preserving functionality. It allows instances in the private subnet to initiate outbound connections (such as package updates or API calls) without exposing them to inbound traffic. This prevents direct attack vectors while still supporting necessary system operations. This is a common design pattern in secure cloud architectures.
 
 ### Public and Private EC2 Instances
 ![Public EC2](screenshots/Ec2-Instances.png)
+
 ![Public EC2](screenshots/Public-ec2-rules.png)
+
 ![Public EC2](screenshots/Ec2-Instances-private.png)
+
 ![Public EC2](screenshots/Private-ec2-rules.png)
+
+The public EC2 instance acts as a controlled entry point (bastion host) into the environment. SSH access is restricted to a specific IP address, minimizing unauthorized access attempts. The private EC2 instance is intentionally deployed without a public IP, ensuring it cannot be accessed directly from the internet. Access must first pass through the public instance, enforcing an additional security boundary and reducing lateral movement risk.
 
 ### Description
 
@@ -100,6 +109,7 @@ A restricted IAM user (`analyst-user`) was created with:
 
 #### Validation
 ![IAM Success](screenshots/Unallowed-user-perm.png)
+
 ![IAM Success](screenshots/IAM-deny.png)
 
 - Can view S3 resources
@@ -108,9 +118,9 @@ A restricted IAM user (`analyst-user`) was created with:
 
 
 
-
 ### IAM Role for EC2
 ![IAM Role](screenshots/IAM-role-attachment.png)
+
 ![IAM Role](screenshots/Ec2-IAM-attach.png)
 Role: `ec2-s3-readonly-role`
 
@@ -129,6 +139,7 @@ Role: `ec2-s3-readonly-role`
 
 ### CloudWatch Alarm and Filter
 ![CloudWatch Alarm](screenshots/Failed-login-filter.png)
+
 ![CloudWatch Alarm](screenshots/alert-config.png)
 
 CloudTrail captures:
@@ -142,11 +153,11 @@ CloudWatch enables:
 - Alerts for suspicious activity
 
 
-
 ## Attack Simulation & Validation
 
 ### Failed Login Attack
 ![Failed Login](screenshots/Triggered-alert-failed-login.png)
+
 ![Failed Login](screenshots/Failed-login-attempts.png)
 
 
@@ -158,6 +169,7 @@ CloudWatch enables:
 
 ### Privilege Escalation
 ![Privilege Escalation](screenshots/Adminaccess-IAM.png)
+
 ![Privilege Escalation](screenshots/Adminaccess-logs.png)
 
 
@@ -167,14 +179,12 @@ CloudWatch enables:
   - DetachRolePolicy
 
 
-
 ### Unauthorized API Attempt
 ![Unauthorized API](screenshots/SSH-restrict-command.png)
 
 
 - Command attempted:
   aws iam list-users
-
 
 
 ## Conclusion
