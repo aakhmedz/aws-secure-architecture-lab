@@ -49,6 +49,7 @@ An IAM role is modified to temporarily gain administrative privileges.
 
 See:
 ![Privilege Escalation](../screenshots/Adminaccess-IAM.png)
+
 ![Privilege Escalation](../screenshots/Adminaccess-logs.png)
 
 ---
