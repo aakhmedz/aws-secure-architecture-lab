@@ -43,8 +43,9 @@ An attacker attempts to gain access by repeatedly entering incorrect credentials
 ## Evidence
 
 See:
-- `/screenshots/failed-login.png`
-- `/screenshots/cloudwatch-alarm.png`
+![Failed Login](screenshots/Triggered-alert-failed-login.png)
+![Failed Login](screenshots/Failed-login-attempts.png)
+
 
 ---
 
