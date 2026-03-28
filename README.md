@@ -58,10 +58,14 @@ Private Route-table
 
 ### NAT Gateway
 ![NAT Gateway](screenshots/Nat-config.png)
+![NAT Gateway](screenshots/Igw-config.png)
+
 
 ### Public and Private EC2 Instances
 ![Public EC2](screenshots/Ec2-Instances.png)
-
+![Public EC2](screenshots/Public-ec2-rules.png)
+![Public EC2](screenshots/Ec2-Instances-private.png)
+![Public EC2](screenshots/Private-ec2-rules.png)
 
 ### Description
 
@@ -96,18 +100,18 @@ A restricted IAM user (`analyst-user`) was created with:
 
 #### Validation
 ![IAM Success](screenshots/Unallowed-user-perm.png)
-![IAM Success](screenshots/Password-reset.png)
+![IAM Success](screenshots/IAM-deny.png)
 
 - Can view S3 resources
 - Cannot modify infrastructure
 - Cannot access IAM controls
-- Requires new password
+
 
 
 
 ### IAM Role for EC2
 ![IAM Role](screenshots/IAM-role-attachment.png)
-
+![IAM Role](screenshots/Ec2-IAM-attach.png)
 Role: `ec2-s3-readonly-role`
 
 - Attached to EC2 instance
@@ -121,7 +125,7 @@ Role: `ec2-s3-readonly-role`
 ![CloudTrail](screenshots/Lab-trail.png)
 
 ### CloudWatch Logs
-![CloudWatch Logs](screenshots/Cloud-trail-history.png)
+![CloudWatch Logs](screenshots/Cloud-watch-log-group.png)
 
 ### CloudWatch Alarm and Filter
 ![CloudWatch Alarm](screenshots/Failed-login-filter.png)
@@ -154,7 +158,8 @@ CloudWatch enables:
 
 ### Privilege Escalation
 ![Privilege Escalation](screenshots/Adminaccess-IAM.png)
-![Privilege Escalation](screenshots/adminaccess-log.png)
+![Privilege Escalation](screenshots/Adminaccess-logs.png)
+
 
 - Temporary admin policy attached
 - Logged as:
@@ -165,7 +170,7 @@ CloudWatch enables:
 
 ### Unauthorized API Attempt
 ![Unauthorized API](screenshots/SSH-restrict-command.png)
-![Unauthorized API](screenshots/SSH-resticted-log.png)
+
 
 - Command attempted:
   aws iam list-users
