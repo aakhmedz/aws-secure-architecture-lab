@@ -10,9 +10,6 @@ Define and validate detection logic for suspicious or high-risk AWS activity usi
 ### Description
 Detects repeated failed login attempts, which may indicate brute force or unauthorized access attempts.
 
-### Filter Pattern
-
-" ($.eventName = "ConsoleLogin") && ($.responseElements.ConsoleLogin = "Failure") "
 
 ### Metric
 - Namespace: SecurityMetrics
