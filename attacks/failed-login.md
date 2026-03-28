@@ -43,9 +43,8 @@ An attacker attempts to gain access by repeatedly entering incorrect credentials
 ## Evidence
 
 See:
-![Failed Login](screenshots/Triggered-alert-failed-login.png)
-![Failed Login](screenshots/Failed-login-attempts.png)
-
+![Failed Login](../screenshots/Triggered-alert-failed-login.png)  
+![Failed Login](../screenshots/Failed-login-attempts.png)
 
 ---
 
